@@ -167,7 +167,8 @@ public class FourInLine {
     // Check if a column number is valid (i.e. in range)
 
     public static boolean isValidColumn(ColumnNum c) {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        return c.index >= 1 && c.index <= 7;
     }
 
 
