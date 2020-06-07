@@ -245,8 +245,26 @@ public class FourInLine {
     // Are there four pieces of the same colour in a row?  Hint: use fillBlanks and
     // transpose to reduce the problem to fourInColumn
 
+    private static boolean isRowColPiece(Piece piece, GameState game, int row, int col) {
+        Column column = game.get(col);
+        if (column.size() > row) {
+            return column.get(column.size() - row - 1) == piece;
+        } else
+            return false;
+    }
+
     public static boolean fourInRow(Piece piece, GameState game) {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        for (int row = 0; row < 6; row++) {
+            for (int startCol = 0; startCol < 4; startCol++) {
+                if (isRowColPiece(piece, game, row, startCol)
+                        && isRowColPiece(piece, game, row, startCol + 1)
+                        && isRowColPiece(piece, game, row, startCol + 2)
+                        && isRowColPiece(piece, game, row, startCol + 3))
+                    return true;
+            }
+        }
+        return false;
     }
 
 
