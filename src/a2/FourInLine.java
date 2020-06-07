@@ -191,7 +191,8 @@ public class FourInLine {
     // Check if the player is able to drop a piece into a column
 
     public static boolean canDropPiece(GameState game, ColumnNum columnN) {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        return allViableColumns(game).stream().anyMatch(x -> x.index == columnN.index);
     }
 
     // Drop a piece into a numbered column, resulting in a new gamestate
