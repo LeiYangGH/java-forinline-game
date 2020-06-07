@@ -46,6 +46,7 @@ public class FourInLine {
     public static class Column extends ArrayList<Piece> {
         public Column() {
         }
+
         public Column(List<Piece> l) {
             this.addAll(l);
         }
@@ -53,14 +54,15 @@ public class FourInLine {
 
     // The GameState is a list of Columns
 
-     public static class GameState extends ArrayList<Column> {
+    public static class GameState extends ArrayList<Column> {
         public GameState() {
         }
+
         public GameState(List<List<Piece>> g) {
             List<Column> c = g.stream().map(Column::new).collect(toList());
             this.addAll(c);
         }
-     }
+    }
 
 
     // ColumnNums are 1-based, but list indices are 0-based.  indexOfColumn converts
@@ -68,13 +70,16 @@ public class FourInLine {
 
     public static class ColumnNum {
         int index;
+
         public ColumnNum(int index) {
             GameState s;
             this.index = index;
         }
+
         public int indexOfColumn() {
             return index - 1;
         }
+
         public String toString() {
             return "" + index;
         }
@@ -320,7 +325,13 @@ public class FourInLine {
     // game yet.
 
     public static Optional<Player> winner(GameState game) {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        if (fourInALine(Piece.redPiece, game)) {
+            return Optional.of(Player.redPlayer);
+        } else if (fourInALine(Piece.bluePiece, game)) {
+            return Optional.of(Player.bluePlayer);
+        } else
+            return Optional.empty();
     }
 
 }
