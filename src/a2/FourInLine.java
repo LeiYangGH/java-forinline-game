@@ -147,8 +147,8 @@ public class FourInLine {
     // Given a piece, what is the colour of the other player's pieces?
 
     public static Piece otherPiece(Piece piece) {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
-
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        return piece == Piece.redPiece ? Piece.bluePiece : Piece.redPiece;
     }
 
 
