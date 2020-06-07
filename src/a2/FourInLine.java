@@ -246,6 +246,10 @@ public class FourInLine {
     // transpose to reduce the problem to fourInColumn
 
     private static boolean isRowColPiece(Piece piece, GameState game, int row, int col) {
+        if (row < 0 || row >= 6)
+            return false;
+        if (col < 0 || col >= 7)
+            return false;
         Column column = game.get(col);
         if (column.size() > row) {
             return column.get(column.size() - row - 1) == piece;
