@@ -121,10 +121,17 @@ public class FourInLine {
     //       so List(List(1,2,3), List(4,5,6)) becomes List(List(1,4), List(2,5), List(3,6))
 
     public static String showGameState(GameState xs) {
-       // throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        // throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        String all = "";
+        for (int row = 0; row < 6; row++) {
+            int finalRow = row;
+            String line = IntStream.range(0, 7)
+                    .mapToObj(i -> String.valueOf(showColumn(xs.get(i)).charAt(finalRow)))
+                    .collect(Collectors.joining(" "));
+            all += line + "\n";
+        }
+        return all.stripTrailing();
 
-
-        return "";
     }
 
     // Which pieces belong to which players?
