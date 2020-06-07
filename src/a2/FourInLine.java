@@ -198,8 +198,9 @@ public class FourInLine {
     // Drop a piece into a numbered column, resulting in a new gamestate
 
     public static GameState dropPiece(GameState game, ColumnNum columnN, Piece piece) {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
-
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        game.get(columnN.indexOfColumn()).add(0, piece);
+        return game;
     }
 
     // Are there four pieces of the same colour in a column?
