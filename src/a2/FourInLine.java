@@ -183,8 +183,9 @@ public class FourInLine {
     // Return a list of all the columns which are not full (used by the AI)
 
     public static List<ColumnNum> allViableColumns(GameState game) {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
-
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        return game.stream().filter(x -> !isColumnFull(x)).map(x -> game.indexOf(x))
+                .map(x -> new ColumnNum(x + 1)).collect(toList());
     }
 
     // Check if the player is able to drop a piece into a column
