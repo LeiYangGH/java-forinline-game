@@ -288,7 +288,23 @@ public class FourInLine {
     }
 
     public static boolean fourDiagonal(Piece piece, GameState game) {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        for (int row = 0; row < 6; row++) {
+            for (int col = 0; col < 7; col++) {
+
+                if (isRowColPiece(piece, game, row, col)
+                        && isRowColPiece(piece, game, row + 1, col + 1)
+                        && isRowColPiece(piece, game, row + 2, col + 2)
+                        && isRowColPiece(piece, game, row + 3, col + 3))
+                    return true;
+                if (isRowColPiece(piece, game, row, col)
+                        && isRowColPiece(piece, game, row - 1, col + 1)
+                        && isRowColPiece(piece, game, row - 2, col + 2)
+                        && isRowColPiece(piece, game, row - 3, col + 3))
+                    return true;
+            }
+        }
+        return false;
     }
 
     // Are there four pieces of the same colour in a line (in any direction)
