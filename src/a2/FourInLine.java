@@ -310,7 +310,10 @@ public class FourInLine {
     // Are there four pieces of the same colour in a line (in any direction)
 
     public static boolean fourInALine(Piece piece, GameState game) {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        return fourInColumn(piece, game)
+                || fourInRow(piece, game)
+                || fourDiagonal(piece, game);
     }
 
     // Who won the game.  Returns an Optional since it could be that no one has won the
