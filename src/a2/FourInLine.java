@@ -1,6 +1,9 @@
 package a2;
 
+import org.junit.platform.commons.util.StringUtils;
+
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -87,8 +90,19 @@ public class FourInLine {
     //   must have length 6.  If the column is not full, then the list should be
     //   prefixed with an appropriate number of spaces
 
+    private static String padLeftLoopRaw(String input, char padChar, int padUpTo) {
+        String out = new String();
+        for (int toPrepend = padUpTo - input.length(); toPrepend > 0; toPrepend--) {
+            out += padChar;
+        }
+        return out + input;
+    }
+
     public static String showColumn(Column xs) {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        String piecesStr = xs.stream().limit(6).map(x -> x.toString()).collect(Collectors.joining(""));
+
+        return padLeftLoopRaw(piecesStr, ' ', 6);
     }
 
 
