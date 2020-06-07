@@ -131,9 +131,9 @@ public class FourInLine {
 
     // Which pieces belong to which players?
 
-    public static Piece pieceOf(Player player)  {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
-
+    public static Piece pieceOf(Player player) {
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        return player == Player.bluePlayer ? Piece.bluePiece : Piece.redPiece;
     }
 
     // Given a player, who is the opposing player?
