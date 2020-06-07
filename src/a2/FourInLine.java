@@ -139,8 +139,8 @@ public class FourInLine {
     // Given a player, who is the opposing player?
 
     public static Player otherPlayer(Player player) {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
-
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        return player == Player.bluePlayer ? Player.redPlayer : Player.bluePlayer;
     }
 
 
