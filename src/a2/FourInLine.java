@@ -210,7 +210,17 @@ public class FourInLine {
     }
 
     public static boolean fourInColumn(Piece piece, GameState game) {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        return game.stream().anyMatch(x -> {
+            for (int start = 0; start <= x.size() - 4; start++) {
+                if ((x.get(start) == piece)
+                        && x.get(start + 1) == piece
+                        && x.get(start + 2) == piece
+                        && x.get(start + 3) == piece)
+                    return true;
+            }
+            return false;
+        });
     }
 
 
