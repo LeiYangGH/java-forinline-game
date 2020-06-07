@@ -175,7 +175,8 @@ public class FourInLine {
     // Check if a column is full (a column can hold at most nRows of pieces)
 
     public static boolean isColumnFull(Column column) {
-        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+//        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+        return column.size() >= 6;
     }
 
 
