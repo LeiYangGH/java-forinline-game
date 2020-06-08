@@ -204,7 +204,9 @@ public class FourInLine {
 
     public static GameState dropPiece(GameState game, ColumnNum columnN, Piece piece) {
 //        throw new RuntimeException("Missing implementation!"); // replace this with implementation
-        game.get(columnN.indexOfColumn()).add(0, piece);
+        if (canDropPiece(game, columnN)) {
+            game.get(columnN.indexOfColumn()).add(0, piece);
+        }
         return game;
     }
 
@@ -298,15 +300,24 @@ public class FourInLine {
             for (int col = 0; col < 7; col++) {
 
                 if (isRowColPiece(piece, game, row, col)
-                        && isRowColPiece(piece, game, row + 1, col + 1)
-                        && isRowColPiece(piece, game, row + 2, col + 2)
-                        && isRowColPiece(piece, game, row + 3, col + 3))
+                    && isRowColPiece(piece, game, row + 1, col + 1)
+                    && isRowColPiece(piece, game, row + 2, col + 2)
+                    && isRowColPiece(piece, game, row + 3, col + 3)) {
+//                    System.out.println(
+//                        "up isRowColPiece row=" + String.valueOf(row) + " col=" + String
+//                            .valueOf(col));
                     return true;
+                }
                 if (isRowColPiece(piece, game, row, col)
-                        && isRowColPiece(piece, game, row - 1, col + 1)
-                        && isRowColPiece(piece, game, row - 2, col + 2)
-                        && isRowColPiece(piece, game, row - 3, col + 3))
+                    && isRowColPiece(piece, game, row - 1, col + 1)
+                    && isRowColPiece(piece, game, row - 2, col + 2)
+                    && isRowColPiece(piece, game, row - 3, col + 3)) {
+//                    System.out.println(
+//                        "down isRowColPiece row=" + String.valueOf(row) + " col=" + String
+//                            .valueOf(col));
+
                     return true;
+                }
             }
         }
         return false;
@@ -316,6 +327,9 @@ public class FourInLine {
 
     public static boolean fourInALine(Piece piece, GameState game) {
 //        throw new RuntimeException("Missing implementation!"); // replace this with implementation
+//        System.out.println("fourInColumn "+String.valueOf(fourInColumn(piece, game)));
+//        System.out.println("fourInRow "+String.valueOf(fourInRow(piece, game)));
+//        System.out.println("fourDiagonal "+String.valueOf(fourDiagonal(piece, game)));
         return fourInColumn(piece, game)
                 || fourInRow(piece, game)
                 || fourDiagonal(piece, game);

@@ -191,8 +191,10 @@ public class GameTest {
     public void testComputerPlayer() {
         GameState blueAboutToWin = new TestBoard("testdata/blueAboutToWin.txt").board;
         ColumnNum aiBlockCol = aiMove(4, redPlayer).apply(blueAboutToWin);
+//        System.out.println(aiBlockCol);//
         GameState gameAfterAiMove = dropPiece(blueAboutToWin, aiBlockCol, pieceOf(redPlayer));
         GameState gameAfterHuman = dropPiece(gameAfterAiMove, new ColumnNum(2), pieceOf(bluePlayer));
+//        System.out.println(showGameState(gameAfterHuman));
         assertEquals(winner(gameAfterHuman), Optional.empty()); // computer should block
         ColumnNum aiWinCol = aiMove(4, bluePlayer).apply(blueAboutToWin);
         GameState gameafterAiWinMove = dropPiece(blueAboutToWin, aiWinCol, pieceOf(bluePlayer));
