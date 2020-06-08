@@ -189,8 +189,10 @@ public class FourInLine {
 
     public static List<ColumnNum> allViableColumns(GameState game) {
 //        throw new RuntimeException("Missing implementation!"); // replace this with implementation
-        return game.stream().filter(x -> !isColumnFull(x)).map(x -> game.indexOf(x))
-                .map(x -> new ColumnNum(x + 1)).collect(toList());
+        return IntStream.range(0, 7)
+                .filter(i -> !isColumnFull(game.get(i)))
+                .mapToObj(i -> new ColumnNum(i + 1))
+                .collect(toList());
     }
 
     // Check if the player is able to drop a piece into a column
@@ -300,18 +302,18 @@ public class FourInLine {
             for (int col = 0; col < 7; col++) {
 
                 if (isRowColPiece(piece, game, row, col)
-                    && isRowColPiece(piece, game, row + 1, col + 1)
-                    && isRowColPiece(piece, game, row + 2, col + 2)
-                    && isRowColPiece(piece, game, row + 3, col + 3)) {
+                        && isRowColPiece(piece, game, row + 1, col + 1)
+                        && isRowColPiece(piece, game, row + 2, col + 2)
+                        && isRowColPiece(piece, game, row + 3, col + 3)) {
 //                    System.out.println(
 //                        "up isRowColPiece row=" + String.valueOf(row) + " col=" + String
 //                            .valueOf(col));
                     return true;
                 }
                 if (isRowColPiece(piece, game, row, col)
-                    && isRowColPiece(piece, game, row - 1, col + 1)
-                    && isRowColPiece(piece, game, row - 2, col + 2)
-                    && isRowColPiece(piece, game, row - 3, col + 3)) {
+                        && isRowColPiece(piece, game, row - 1, col + 1)
+                        && isRowColPiece(piece, game, row - 2, col + 2)
+                        && isRowColPiece(piece, game, row - 3, col + 3)) {
 //                    System.out.println(
 //                        "down isRowColPiece row=" + String.valueOf(row) + " col=" + String
 //                            .valueOf(col));
